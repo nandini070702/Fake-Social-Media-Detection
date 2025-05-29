@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - SocialVerify</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F7F7F7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4c2c50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #cd1f88;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #cd1f88;
+            color: #fff;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #4c2c50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .btn {
+            background-color: #cd1f88;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #cd1f88;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reports - SocialVerify</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="reports.html">Reports</a>
+        <a href="settings.html">Settings</a>
+        <a href="auth.html">Sign Up/Sign In</a>
+    </nav>
+
+    <div class="container">
+        <h3>Report Overview</h3>
+        <p>Total Reports: 15 | Resolved: 10 | Under Review: 3 | Fake: 2</p>
+
+        <h3>Submitted Reports</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Post ID</th>
+                    <th>User</th>
+                    <th>Post URL</th>
+                    <th>Detection Probability</th>
+                    <th>Status</th>
+                    <th>Report Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#1234</td>
+                    <td>John Doe</td>
+                    <td><a href="#">Post Link</a></td>
+                    <td>85%</td>
+                    <td>Under Review</td>
+                    <td>2024-12-20</td>
+                    <td><button class="btn">View Details</button></td>
+                </tr>
+                <tr>
+                    <td>#5678</td>
+                    <td>Jane Smith</td>
+                    <td><a href="#">Post Link</a></td>
+                    <td>10%</td>
+                    <td>Verified</td>
+                    <td>2024-12-21</td>
+                    <td><button class="btn">View Details</button></td>
+                </tr>
+                <tr>
+                    <td>#9101</td>
+                    <td>Sam Brown</td>
+                    <td><a href="#">Post Link</a></td>
+                    <td>70%</td>
+                    <td>Under Review</td>
+                    <td>2024-12-22</td>
+                    <td><button class="btn">View Details</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>© 2024 SocialVerify. All rights reserved.</p>
+    </footer>
+</body>
+</html>

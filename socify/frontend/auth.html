@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up/Sign In - SocialVerify</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F7F7F7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4c2c50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #cd1f88;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #cd1f88;
+            color: #fff;
+        }
+        .container {
+            width: 40%;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        footer {
+            background-color: #4c2c50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: #cd1f88;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #cd1f88;
+        }
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-switch {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .form-switch button {
+            background-color: transparent;
+            color: #cd1f88;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sign Up/Sign In - SocialVerify</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="reports.html">Reports</a>
+        <a href="settings.html">Settings</a>
+        <a href="auth.html">Sign Up/Sign In</a>
+
+    </nav>
+
+    <div class="container" id="auth-container">
+        <!-- Sign In Form -->
+        <div id="sign-in-form">
+            <h3>Sign In</h3>
+            <form id="signInForm">
+                <label for="signin-username">Username:</label>
+                <input type="text" id="signin-username" name="username" placeholder="Enter your username" required>
+
+                <label for="signin-password">Password:</label>
+                <input type="password" id="signin-password" name="password" placeholder="Enter your password" required>
+
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+            <p>Don't have an account? <button class="form-switch" onclick="showSignUp()">Sign up here</button></p>
+        </div>
+
+        <!-- Sign Up Form (Initially hidden) -->
+        <div id="sign-up-form" style="display: none;">
+            <h3>Sign Up</h3>
+            <form id="signUpForm">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="username" placeholder="Enter your username" required>
+
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" placeholder="Enter your password" required>
+
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <p>Already have an account? <button class="form-switch" onclick="showSignIn()">Sign in here</button></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 SocialVerify. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Switch between Sign In and Sign Up forms
+        function showSignUp() {
+            document.getElementById('sign-in-form').style.display = 'none';
+            document.getElementById('sign-up-form').style.display = 'block';
+        }
+    
+        function showSignIn() {
+            document.getElementById('sign-in-form').style.display = 'block';
+            document.getElementById('sign-up-form').style.display = 'none';
+        }
+    
+        // Handle Sign In Form submission
+        document.getElementById('signInForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+    
+            const username = document.getElementById('signin-username').value;
+            const password = document.getElementById('signin-password').value;
+    
+            try {
+                const response = await fetch('http://127.0.0.1:5000/signin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+    
+                const data = await response.json();
+                alert(data.message);
+    
+                if (response.ok) {
+                    window.location.href = "dashboard.html";
+                }
+            } catch (error) {
+                console.error("Sign in error:", error);
+                alert("Error connecting to server.");
+            }
+        });
+    
+        // Handle Sign Up Form submission
+        document.getElementById('signUpForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+    
+            const username = document.getElementById('signup-username').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+    
+            try {
+                const response = await fetch('http://127.0.0.1:5000/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, email, password })
+                });
+    
+                const data = await response.json();
+                alert(data.message);
+    
+                if (response.ok) {
+                    showSignIn();
+                }
+            } catch (error) {
+                console.error("Sign up error:", error);
+                alert("Error connecting to server.");
+            }
+        });
+    </script>
+    
+</body>
+</html>
+

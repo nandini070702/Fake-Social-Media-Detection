@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SocialVerify</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F7F7F7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4c2c50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #cd1f88;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #cd1f88;
+            color: #fff;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #4c2c50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: #cd1f88;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #cd1f88;
+        }
+        canvas {
+            max-width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dashboard - SocialVerify</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="reports.html">Reports</a>
+        <a href="settings.html">Settings</a>
+        <a href="auth.html">Sign Up/Sign In</a>
+    </nav>
+
+    <div class="container">
+        <!-- Recent Activity -->
+        <section>
+            <h3>Recent Activity</h3>
+            <ul>
+                <li>Post ID #1234: Fake (85%)</li>
+                <li>Post ID #5678: Verified (10%)</li>
+                <li>Post ID #9101: Under Review</li>
+            </ul>
+        </section>
+
+        <!-- Analytics Section -->
+        <section>
+            <h3>Analytics</h3>
+            <canvas id="myChart"></canvas>
+        </section>
+
+        <!-- Report History -->
+        <section>
+            <h3>Your Report History</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Post ID</th>
+                        <th>Status</th>
+                        <th>Date Submitted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1234</td>
+                        <td>Resolved</td>
+                        <td>2024-12-20</td>
+                    </tr>
+                    <tr>
+                        <td>#5678</td>
+                        <td>Under Review</td>
+                        <td>2024-12-21</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Quick Actions -->
+        <section>
+            <h3>Quick Actions</h3>
+            <button class="btn">Upload New Post for Detection</button>
+            <button class="btn">View Pending Reports</button>
+        </section>
+
+        <!-- Profile Section -->
+        <section>
+            <h3>User Profile</h3>
+            <p>Name: John Doe</p>
+            <p>Email: john.doe@example.com</p>
+            <button class="btn">Update Profile</button>
+        </section>
+
+        <!-- Notifications -->
+        <section>
+            <h3>Recent Alerts</h3>
+            <ul>
+                <li>Alert: Fake post detected on ID #1234 (85% fake).</li>
+                <li>Alert: Profile review for post ID #5678.</li>
+            </ul>
+        </section>
+
+        <!-- Performance Metrics -->
+        <section>
+            <h3>Performance Metrics</h3>
+            <p>Detection Accuracy: 95%</p>
+            <p>Average Response Time: 2.3 seconds</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 SocialVerify. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Example Chart.js code to generate a basic chart
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Post ID #1234', 'Post ID #5678', 'Post ID #9101'],
+                datasets: [{
+                    label: 'Fake Post Detection',
+                    data: [85, 10, 50],
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 159, 64, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
